@@ -1,0 +1,45 @@
+# github.com/cpuguy83/go-md2man/v2 v2.0.1
+## explicit; go 1.11
+github.com/cpuguy83/go-md2man/v2/md2man
+# github.com/jsightapi/jsight-api-core v0.1.2-0.20230520130248-c19e74ae348f
+## explicit; go 1.18
+github.com/jsightapi/jsight-api-core/catalog
+github.com/jsightapi/jsight-api-core/core
+github.com/jsightapi/jsight-api-core/directive
+github.com/jsightapi/jsight-api-core/jerr
+github.com/jsightapi/jsight-api-core/kit
+github.com/jsightapi/jsight-api-core/notation
+github.com/jsightapi/jsight-api-core/scanner
+# github.com/jsightapi/jsight-schema-core v0.1.2-0.20230517092740-1dbc4fc1bfae
+## explicit; go 1.18
+github.com/jsightapi/jsight-schema-core
+github.com/jsightapi/jsight-schema-core/bytes
+github.com/jsightapi/jsight-schema-core/errs
+github.com/jsightapi/jsight-schema-core/fs
+github.com/jsightapi/jsight-schema-core/internal/ds
+github.com/jsightapi/jsight-schema-core/internal/sync
+github.com/jsightapi/jsight-schema-core/json
+github.com/jsightapi/jsight-schema-core/kit
+github.com/jsightapi/jsight-schema-core/lexeme
+github.com/jsightapi/jsight-schema-core/notations/jschema
+github.com/jsightapi/jsight-schema-core/notations/jschema/checker
+github.com/jsightapi/jsight-schema-core/notations/jschema/ischema
+github.com/jsightapi/jsight-schema-core/notations/jschema/ischema/constraint
+github.com/jsightapi/jsight-schema-core/notations/jschema/loader
+github.com/jsightapi/jsight-schema-core/notations/jschema/scanner
+github.com/jsightapi/jsight-schema-core/notations/regex
+github.com/jsightapi/jsight-schema-core/panics
+github.com/jsightapi/jsight-schema-core/reader
+github.com/jsightapi/jsight-schema-core/rules/enum
+# github.com/lucasjones/reggen v0.0.0-20200904144131-37ba4fa293bb
+## explicit
+github.com/lucasjones/reggen
+# github.com/russross/blackfriday/v2 v2.1.0
+## explicit
+github.com/russross/blackfriday/v2
+# github.com/urfave/cli/v2 v2.8.1
+## explicit; go 1.18
+github.com/urfave/cli/v2
+# github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673
+## explicit
+github.com/xrash/smetrics
