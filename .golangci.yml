@@ -71,7 +71,7 @@ linters:
   enable:
     - bodyclose
     - deadcode
-    - depguard
+    # - depguard # NOTE: started to misbehave on golangci-lint v.1.53.3
     - dogsled
     - dupl
     - errcheck

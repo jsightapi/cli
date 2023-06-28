@@ -14,8 +14,8 @@ lint:
 
 .PHONY: build
 build:
-	go build \
+  go build \
 		-ldflags="-X 'main.Version=${VERSION}'" \
 		-ldflags="-X 'main.CommitHash=${COMMIT_HASH}'" \
-		-o jsight-cli \
+		-o build/jsight-cli \
 		.
