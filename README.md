@@ -58,9 +58,9 @@ jsight version
 
 ## :rocket: &nbsp; Usage
 
-- `jsight version` - outputs the current version of JSight CLI.
-- `jsight help` - outputs the manaul fo JSight CLI.
-- `jsight doc html <jsight file>` - parses the `<jsight file>` and outputs the corresponding html
+- `jsight version` — outputs the current version of JSight CLI.
+- `jsight help` — outputs the manaul fo JSight CLI.
+- `jsight doc html <jsight file>` — parses the `<jsight file>` and outputs the corresponding html
   document (or an error description).
 
 Example:
@@ -71,9 +71,9 @@ jsight doc html my-api-spec.jst > my-api-spec.html
 
 ## :rocket: &nbsp; Manual Building and Testing
 
-- `make` - builds binary to the `./build` folder and runs the tests.
-- `make build` - builds binary to the `./build` folder.
-- `make test` - runs the tests against the `./build/jsight` binary.
+- `make` — builds binary to the `./build` folder and runs the tests.
+- `make build` — builds binary to the `./build` folder.
+- `make test` — runs the tests against the `./build/jsight` binary.
 
 ## :bookmark_tabs: &nbsp; Versioning
 
@@ -192,6 +192,10 @@ details.
 We sincerely thank all those without whom this project would not have been possible:
 
 - [Alchemist Accelerator](https://www.alchemistaccelerator.com/),
+- [Urfave](https://github.com/urfave) for his [cli](https://github.com/urfave/cli) library,
+- [Lucas Jones](https://github.com/lucasjones) for his
+  [reggen](https://github.com/lucasjones/reggen) library.
+
 
 <div align="center">
 
