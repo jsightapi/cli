@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"os"
 	"runtime"
@@ -12,7 +11,7 @@ import (
 )
 
 var (
-	Version    = "development"
+	Version    = "1.0.0"
 	CommitHash = "commit hash not defined"
 )
 
@@ -37,7 +36,7 @@ func run() error {
 						Flags:     []cli.Flag{},
 						ArgsUsage: "<input>",
 						Action:    generateDocumentation(generator.FormatHTML),
-					},
+					},/*
 					{
 						Name:      "pdf",
 						Usage:     "generates documentation in PDF format",
@@ -49,16 +48,14 @@ func run() error {
 						Usage:     "generates documentation in DOCX format",
 						ArgsUsage: "<input>",
 						Action:    generateDocumentation(generator.FormatDOCX),
-					},
+					},*/
 				},
-			},
-
+			},/*
 			{
 				Name:   "convert",
 				Usage:  "converting JSight to OpenAPI and back",
 				Action: convert,
-			},
-
+			},*/
 			{
 				Name:   "version",
 				Usage:  "print tool version",
@@ -97,9 +94,9 @@ func generateDocumentation(f generator.Format) func(ctx *cli.Context) error {
 	}
 }
 
-func convert(*cli.Context) error {
+/* func convert(*cli.Context) error {
 	return errors.New("not implemented yet")
-}
+}*/
 
 func printVersion(ctx *cli.Context) error {
 	_, err := fmt.Fprintf(ctx.App.Writer, `Version: %s (%s)

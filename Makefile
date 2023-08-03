@@ -1,21 +1,14 @@
 VERSION="0.0.1"
 COMMIT_HASH=`git show -s --format=%H`
+WORK_DIR="/go/src/github.com/jsightapi/cli"
 
 .PHONY: all
-all: fmt lint build
-
-.PHONY: fmt
-fmt:
-	go fmt ./...
-
-.PHONY: lint
-lint:
-	golangci-lint run
+all: build test
 
 .PHONY: build
-build:
-  go build \
-		-ldflags="-X 'main.Version=${VERSION}'" \
-		-ldflags="-X 'main.CommitHash=${COMMIT_HASH}'" \
-		-o build/jsight-cli \
-		.
+build: 
+	docker build --rm -f "docker/Dockerfile" --progress plain --output build .
+
+.PHONY: test
+test:
+	docker compose -f "docker/docker-compose.yml" up
