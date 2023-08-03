@@ -7,6 +7,6 @@ services:
       - ./../build:/usr/local/bin
       - ./../tests:/app/tests
     working_dir: /app/tests
-    command: /bin/sh -c "/app/tests/test.sh"
+    command: /bin/sh -c "/app/tests/run-tests.sh"
     # tty: true
     

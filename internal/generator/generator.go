@@ -40,7 +40,16 @@ type common struct {
 func (c common) Generate(_ context.Context, filepath string, in io.Reader, out io.Writer) error {
 	j, err := kit.NewJapi(filepath)
 	if err != nil {
-		return fmt.Errorf("specification error: %w", err)
+		filepath := "no file"
+		if err.File != nil {
+			filepath = err.File.Name()
+		}
+		return fmt.Errorf("JSight API parsing error at `%v` [%v, %v]\nError message: %v\nQuote:\n----> %v", 
+			filepath,
+			err.Location.Line,
+			err.Location.Column,
+			err.Msg,
+			err.Quote)
 	}
 	return c.gen(j, out)
 }

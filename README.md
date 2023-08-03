@@ -61,7 +61,7 @@ jsight version
 - `jsight version` - outputs the current version of JSight CLI.
 - `jsight help` - outputs the manaul fo JSight CLI.
 - `jsight doc html <jsight file>` - parses the `<jsight file>` and outputs the corresponding html
-  document or an error description.
+  document (or an error description).
 
 Example:
 

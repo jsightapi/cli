@@ -1,0 +1,4 @@
+JSight API parsing error at `test04.jst` [1, 1]
+Error message: incorrect parameter (Filename) "wrong_lib.jst": isn't exists
+Quote:
+----> INCLUDE wrong_lib.jst
