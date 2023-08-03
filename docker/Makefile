@@ -19,5 +19,5 @@ build:
 	cd ${WORK_DIR} && go build \
 		-ldflags="-X 'main.Version=${VERSION}'" \
 		-ldflags="-X 'main.CommitHash=${COMMIT_HASH}'" \
-		-o ${BUILD_DIR}/jsight.so \
+		-o ${BUILD_DIR}/jsight \
 		.

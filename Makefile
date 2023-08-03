@@ -3,8 +3,12 @@ COMMIT_HASH=`git show -s --format=%H`
 WORK_DIR="/go/src/github.com/jsightapi/cli"
 
 .PHONY: all
-all: build
+all: build test
 
 .PHONY: build
 build: 
-	docker build --rm -f "docker/Dockerfile" --output build .
+	docker build --rm -f "docker/Dockerfile" --progress plain --output build .
+
+.PHONY: test
+test:
+	docker compose -f "docker/docker-compose.yml" up

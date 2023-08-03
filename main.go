@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	Version    = "development"
+	Version    = "1.0.0"
 	CommitHash = "commit hash not defined"
 )
 
