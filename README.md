@@ -48,6 +48,7 @@ Download `jsight` cli tool from the official website and move to the `/usr/local
 ```sh
 wget https://jsight.io/downloads/jsight-cli/1.0.0/linux-x64/jsight
 mv jsight /usr/local/bin
+chmod +x /usr/local/bin/jsight
 ```
 
 Check the installation:
