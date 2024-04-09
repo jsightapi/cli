@@ -5,6 +5,14 @@ import (
 )
 
 type PieceOfPathVariable struct {
-	node  ischema.Node
-	types map[string]ischema.Type
+	node     ischema.Node
+	types    map[string]ischema.Type
+	pathOnly bool
+}
+
+func PieceOfPathVariablePathOnly() PieceOfPathVariable {
+	return PieceOfPathVariable{
+		node:     ischema.VirtualNodeForAny(),
+		pathOnly: true,
+	}
 }
