@@ -2,8 +2,11 @@ package generator
 
 import (
 	"context"
+
 	"errors"
+
 	"fmt"
+
 	"io"
 
 	"github.com/jsightapi/jsight-api-core/kit"
@@ -27,10 +30,12 @@ type Generator interface {
 var ErrUnsupportedFormat = errors.New("unsupported format")
 
 func New(f Format) (Generator, error) {
-	if f != FormatHTML {
+	switch f {
+	case FormatHTML:
+		return newHTML(), nil
+	default:
 		return nil, ErrUnsupportedFormat
 	}
-	return newHTML(), nil
 }
 
 type common struct {
@@ -44,7 +49,7 @@ func (c common) Generate(_ context.Context, filepath string, in io.Reader, out i
 		if err.File != nil {
 			filepath = err.File.Name()
 		}
-		return fmt.Errorf("JSight API parsing error at `%v` [%v, %v]\nError message: %v\nQuote:\n----> %v", 
+		return fmt.Errorf("JSight API parsing error at `%v` [%v, %v]\nError message: %v\nQuote:\n----> %v",
 			filepath,
 			err.Location.Line,
 			err.Location.Column,

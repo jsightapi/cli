@@ -70,7 +70,7 @@ linters:
   disable-all: true
   enable:
     - bodyclose
-    - deadcode
+#    - deadcode
     # - depguard # NOTE: started to misbehave on golangci-lint v.1.53.3
     - dogsled
     - dupl
@@ -95,13 +95,13 @@ linters:
     - noctx
     - nolintlint
     - staticcheck
-    - structcheck
+#    - structcheck
     - stylecheck
     - typecheck
     - unconvert
     - unparam
     - unused
-    - varcheck
+#    - varcheck
     - whitespace
 
   # don't enable:

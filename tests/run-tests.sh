@@ -39,4 +39,13 @@ fi
 
 
 
+
+jsight convert openapi json test01.jst > /tmp/test01.json
+if cmp --silent /tmp/test01.json ./expected/test01.json; then
+    echo "> Test 06: [OK]"
+else
+    echo "> Test 06: [FAILED] \`convert openapi json test01.jst\` output does not match the expected value!\n\n- ACTUAL:\n`head -n 5 /tmp/test01.json`\n\n- EXPECTED:\n`head -n 5 ./expected/test01.json`"
+fi
+
+
 echo "Tests finished!"
