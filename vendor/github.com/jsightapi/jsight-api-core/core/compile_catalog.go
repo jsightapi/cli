@@ -26,22 +26,33 @@ func (core *JApiCore) collectPiecesOfPathVariables() *jerr.JApiError {
 	ut := core.UserTypesData()
 
 	for i := 0; i < len(core.rawPathVariables); i++ {
-		if err := core.checkPathSchema(core.rawPathVariables[i].schema); err != nil {
-			return core.rawPathVariables[i].pathDirective.KeywordError(err.Error())
+		var schemaProps map[string]ischema.Node
+		var types map[string]ischema.Type
+
+		if !core.rawPathVariables[i].imitated {
+			if err := core.checkPathSchema(core.rawPathVariables[i].schema); err != nil {
+				return core.rawPathVariables[i].pathDirective.KeywordError(err.Error())
+			}
+			obj := catalog.JSchemaObject{
+				JSchema: core.rawPathVariables[i].schema,
+			}
+			schemaProps = obj.ObjectFirstLevelProperties(ut)
+			types = core.rawPathVariables[i].schema.InnerTypesList()
 		}
 
-		obj := catalog.JSchemaObject{
-			JSchema: core.rawPathVariables[i].schema,
-		}
-		schemaProps := obj.ObjectFirstLevelProperties(ut)
-		types := core.rawPathVariables[i].schema.InnerTypesList()
-
-		// pathOnly piece should not participate in duplicate definition validation
+		// imitated piece should not participate in duplicate definition validation
 		for _, pp := range core.rawPathVariables[i].parameters {
 			piece, registered := core.piecesOfPathVariables[pp]
-			paramSchema, defined := schemaProps[pp.parameter]
 
-			if registered && !piece.pathOnly && defined {
+			var paramSchema ischema.Node
+			var defined bool
+			if core.rawPathVariables[i].imitated {
+				paramSchema, defined = nil, false
+			} else {
+				paramSchema, defined = schemaProps[pp.parameter]
+			}
+
+			if registered && !piece.imitated && defined {
 				return core.rawPathVariables[i].pathDirective.KeywordError(
 					fmt.Sprintf("The parameter %q has already been defined earlier",
 						pp.path))
@@ -54,7 +65,7 @@ func (core *JApiCore) collectPiecesOfPathVariables() *jerr.JApiError {
 				}
 				delete(schemaProps, pp.parameter)
 			} else if !registered {
-				core.piecesOfPathVariables[pp] = PieceOfPathVariablePathOnly()
+				core.piecesOfPathVariables[pp] = PieceOfPathVariableImitation()
 			}
 		}
 

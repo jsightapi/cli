@@ -1,4 +1,4 @@
-VERSION="0.0.1"
+VERSION="1.2.0"
 COMMIT_HASH=`git show -s --format=%H`
 WORK_DIR=/go/src/github.com/jsightapi/cli
 BUILD_DIR=/tmp/build

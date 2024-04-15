@@ -1,7 +1,11 @@
 package generator
 
 import (
-	"context"
+	"github.com/jsightapi/cli/internal/statistics"
+
+	"github.com/urfave/cli/v2"
+
+	"github.com/jsightapi/cli/internal/format"
 
 	"errors"
 
@@ -12,27 +16,24 @@ import (
 	"github.com/jsightapi/jsight-api-core/kit"
 )
 
-type Format string
-
-const (
-	FormatHTML Format = "html"
-	FormatPDF  Format = "pdf"
-	FormatDOCX Format = "docx"
-)
-
 // Generator an abstraction for generating documentation from the specification.
 type Generator interface {
 	// Generate generates documentation from the specification.
+	// Generate convert jsight to openapi json or yaml schema
 	// Specification will be read from in and print to out.
-	Generate(ctx context.Context, filepath string, in io.Reader, out io.Writer) error
+	Generate(ctx *cli.Context, filepath string, in io.Reader, out io.Writer, sendStatFlag bool, fileSize int64) error
 }
 
 var ErrUnsupportedFormat = errors.New("unsupported format")
 
-func New(f Format) (Generator, error) {
+func New(f format.Format) (Generator, error) {
 	switch f {
-	case FormatHTML:
+	case format.FormatHTML:
 		return newHTML(), nil
+	case format.FormatJSON:
+		return newOpenapiJSON(), nil
+	case format.FormatYAML:
+		return newOpenapiYAML(), nil
 	default:
 		return nil, ErrUnsupportedFormat
 	}
@@ -42,8 +43,9 @@ type common struct {
 	gen func(kit.JApi, io.Writer) error
 }
 
-func (c common) Generate(_ context.Context, filepath string, in io.Reader, out io.Writer) error {
+func (c common) Generate(ctx *cli.Context, filepath string, in io.Reader, out io.Writer, sendStatFlag bool, fileSize int64) error {
 	j, err := kit.NewJapi(filepath)
+	statistics.SendStat(&j, err, sendStatFlag, fileSize, nil)
 	if err != nil {
 		filepath := "no file"
 		if err.File != nil {
@@ -57,4 +59,8 @@ func (c common) Generate(_ context.Context, filepath string, in io.Reader, out i
 			err.Quote)
 	}
 	return c.gen(j, out)
+}
+
+func FormatError(err error, f format.Format) error {
+	return fmt.Errorf("convert %s: %w", f, err)
 }

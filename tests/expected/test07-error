@@ -1,0 +1,9 @@
+NAME:
+   jsight convert openapi json - generate OpenAPI JSON from JSight
+
+USAGE:
+   jsight convert openapi json [command options] <input>
+
+OPTIONS:
+   --help, -h  show help (default: false)
+   

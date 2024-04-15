@@ -1,23 +1,24 @@
 package main
 
 import (
-	"bitbucket.org/jsight/cli/internal/converter"
-
 	"fmt"
 
+	"github.com/jsightapi/cli/internal/argparser"
+
+	"github.com/jsightapi/cli/internal/format"
+
 	"os"
-	
+
 	"runtime"
 
 	"github.com/urfave/cli/v2"
-
-	"bitbucket.org/jsight/cli/internal/generator"
 )
 
 var (
-	Version    = "1.0.0"
-	CommitHash = "commit hash not defined"
+	Version = "1.2.0"
 )
+
+var statDisclaimer = "   By default, the application sends anonymous usage and error statistics to JSight to help improve the product.\n   Use the -s option to stop sending the statistics."
 
 func main() {
 	if err := run(); err != nil {
@@ -28,7 +29,8 @@ func main() {
 
 func run() error {
 	app := &cli.App{
-		Usage: "is a tool for working with files in the JSight language.",
+		Name:  "jsight",
+		Usage: fmt.Sprintf("is a tool for working with files in the JSight language.\n\n%s", statDisclaimer),
 		Commands: []*cli.Command{
 			{
 				Name:  "doc",
@@ -39,7 +41,7 @@ func run() error {
 						Usage:     "generates documentation in HTML format",
 						Flags:     []cli.Flag{},
 						ArgsUsage: "<input>",
-						Action:    generateDocumentation(generator.FormatHTML),
+						Action:    makeResult(format.FormatHTML),
 					}, /*
 						{
 							Name:      "pdf",
@@ -68,14 +70,14 @@ func run() error {
 								Usage:     "generate OpenAPI JSON from JSight",
 								Flags:     []cli.Flag{},
 								ArgsUsage: "<input>",
-								Action:    convert(converter.FormatJSON),
+								Action:    makeResult(format.FormatJSON),
 							},
 							{
 								Name:      "yaml",
 								Usage:     "generate OpenAPI YAML from JSight",
 								Flags:     []cli.Flag{},
 								ArgsUsage: "<input>",
-								Action:    convert(converter.FormatYAML),
+								Action:    makeResult(format.FormatYAML),
 							},
 						},
 					},
@@ -88,57 +90,29 @@ func run() error {
 			},
 		},
 		EnableBashCompletion: true,
+		Flags: []cli.Flag{
+			&cli.BoolFlag{
+				Name:        "s",
+				Usage:       "disables the sending of anonymous usage and error statistics to JSight",
+				DefaultText: "enabled",
+			},
+		},
 	}
 
 	return app.Run(os.Args)
 }
 
-func parseArgs(ctx *cli.Context, f string) (*os.File, *string, error) {
-	aa := ctx.Args()
-	if aa.Len() != 1 {
-		return nil, nil, cli.ShowCommandHelp(ctx, f)
-	}
-
-	specPath := aa.First()
-	if _, err := os.Stat(specPath); err != nil {
-		return nil, nil, err
-	}
-
-	r, err := os.Open(specPath)
-	return r, &specPath, err
-}
-
-func generateDocumentation(f generator.Format) func(ctx *cli.Context) error {
+func makeResult(f format.Format) func(ctx *cli.Context) error {
 	return func(ctx *cli.Context) error {
-		r, specPath, err := parseArgs(ctx, string(f))
-		if err != nil {
-			return err
-		}
-		g, err := generator.New(f)
-		if err != nil {
-			return err
-		}
-		return g.Generate(ctx.Context, *specPath, r, ctx.App.Writer)
-	}
-}
-
-func convert(f converter.Format) func(ctx *cli.Context) error {
-	return func(ctx *cli.Context) error {
-		r, specPath, err := parseArgs(ctx, string(f))
-		if err != nil {
-			return err
-		}
-		c, err := converter.New(f)
-		if err != nil {
-			return err
-		}
-		return c.Convert(ctx.Context, *specPath, r, ctx.App.Writer)
+		return argparser.DoWork(f, ctx)
 	}
 }
 
 func printVersion(ctx *cli.Context) error {
-	_, err := fmt.Fprintf(ctx.App.Writer, `Version: %s (%s)
+	_, err := fmt.Fprintf(ctx.App.Writer, `Version: %s
 Golang version: %s
-`, Version, CommitHash, runtime.Version())
+--
+%s
+`, Version, runtime.Version(), statDisclaimer)
 	return err
 }

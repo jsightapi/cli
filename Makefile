@@ -12,3 +12,14 @@ build:
 .PHONY: test
 test:
 	docker compose -f "docker/docker-compose.yml" up
+
+.PHONY: fmt
+fmt:
+	go fmt ./...
+
+.PHONE: lint
+lint:
+	golangci-lint run
+
+.PHONY: dev
+dev: fmt lint test

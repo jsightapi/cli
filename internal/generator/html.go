@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"io"
-	
+
 	"text/template"
 
 	"github.com/jsightapi/jsight-api-core/kit"
