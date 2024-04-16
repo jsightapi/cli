@@ -63,18 +63,18 @@ func run() error {
 				Subcommands: []*cli.Command{
 					{
 						Name:  "openapi",
-						Usage: "generate OpenAPI json or yaml from JSight",
+						Usage: "converts JSight to OpenAPI JSON or YAML",
 						Subcommands: []*cli.Command{
 							{
 								Name:      "json",
-								Usage:     "generate OpenAPI JSON from JSight",
+								Usage:     "converts JSight to OpenAPI JSON",
 								Flags:     []cli.Flag{},
 								ArgsUsage: "<input>",
 								Action:    makeResult(format.FormatJSON),
 							},
 							{
 								Name:      "yaml",
-								Usage:     "generate OpenAPI YAML from JSight",
+								Usage:     "converts JSight to OpenAPI YAML",
 								Flags:     []cli.Flag{},
 								ArgsUsage: "<input>",
 								Action:    makeResult(format.FormatYAML),
@@ -104,7 +104,7 @@ func run() error {
 
 func makeResult(f format.Format) func(ctx *cli.Context) error {
 	return func(ctx *cli.Context) error {
-		return argparser.DoWork(f, ctx)
+		return argparser.DoWork(ctx, f)
 	}
 }
 

@@ -16,7 +16,7 @@ import (
 
 var noInputFileErrorString = "no input file"
 
-func DoWork(f format.Format, ctx *cli.Context) error {
+func DoWork(ctx *cli.Context, f format.Format) error {
 	var err error
 	var r *os.File
 	var specPath *string
