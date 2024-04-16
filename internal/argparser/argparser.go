@@ -42,7 +42,7 @@ func FormatError(err error, f format.Format) error {
 	return fmt.Errorf("convert %s: %w", f, err)
 }
 
-func DoWork(f format.Format, ctx *cli.Context) error {
+func DoWork(ctx *cli.Context, f format.Format) error {
 	var err error
 	var specPath *string
 	var sendStatFlag bool

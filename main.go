@@ -104,7 +104,7 @@ func run() error {
 
 func makeResult(f format.Format) func(ctx *cli.Context) error {
 	return func(ctx *cli.Context) error {
-		return argparser.DoWork(f, ctx)
+		return argparser.DoWork(ctx, f)
 	}
 }
 
