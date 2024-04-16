@@ -20,7 +20,7 @@ import (
 	"github.com/denisbrodbeck/machineid"
 )
 
-var serverStatAddress = "stat.jsight.io:1053"
+var serverStatAddress = "127.0.0.1:1053" // FIXME: "stat.jsight.io:1053"
 
 const macAddressLength = 17
 

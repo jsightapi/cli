@@ -1,5 +1,5 @@
 NAME:
-   jsight convert openapi json - generate OpenAPI JSON from JSight
+   jsight convert openapi json - converts JSight to OpenAPI JSON
 
 USAGE:
    jsight convert openapi json [command options] <input>
