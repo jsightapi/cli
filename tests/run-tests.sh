@@ -70,4 +70,11 @@ else
     echo "> Test 09: [FAILED] \`convert openapi json\` output does not match the expected value!\n\n- ACTUAL:\n`head -n 5 /tmp/openapi09.json`\n\n- EXPECTED:\n`head -n 5 ./expected/openapi09.json`"
 fi
 
+jsight convert openapi yaml test09.jst > /tmp/openapi09.yaml
+if cmp --silent /tmp/openapi09.yaml ./expected/openapi09.yaml; then
+    echo "> Test 10: [OK]"
+else
+    echo "> Test 10: [FAILED] \`convert openapi yaml\` output does not match the expected value!\n\n- ACTUAL:\n`head -n 5 /tmp/openapi09.yaml`\n\n- EXPECTED:\n`head -n 5 ./expected/openapi09.yaml`"
+fi
+
 echo "Tests finished!"
