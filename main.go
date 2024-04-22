@@ -9,20 +9,18 @@ import (
 
 	"os"
 
-	"runtime"
-
-	"github.com/urfave/cli/v2"
+	cli "github.com/urfave/cli/v2"
 )
 
 var (
-	Version = "1.2.0"
+	Version = "1.1.0"
 )
 
 var statDisclaimer = "   By default, the application sends anonymous usage and error statistics to JSight to help improve the product.\n   Use the -s option to stop sending the statistics."
 
 func main() {
 	if err := run(); err != nil {
-		fmt.Fprintln(os.Stderr, err.Error())
+		_, _ = fmt.Fprintln(os.Stderr, err.Error())
 		os.Exit(1)
 	}
 }
@@ -110,9 +108,8 @@ func makeResult(f format.Format) func(ctx *cli.Context) error {
 
 func printVersion(ctx *cli.Context) error {
 	_, err := fmt.Fprintf(ctx.App.Writer, `Version: %s
-Golang version: %s
 --
 %s
-`, Version, runtime.Version(), statDisclaimer)
+`, Version, statDisclaimer)
 	return err
 }
