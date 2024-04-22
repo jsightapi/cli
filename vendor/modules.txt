@@ -1,16 +1,26 @@
-# github.com/cpuguy83/go-md2man/v2 v2.0.1
+# github.com/cpuguy83/go-md2man/v2 v2.0.2
 ## explicit; go 1.11
 github.com/cpuguy83/go-md2man/v2/md2man
-# github.com/jsightapi/jsight-api-core v0.1.2-0.20230520130248-c19e74ae348f
+# github.com/denisbrodbeck/machineid v1.0.1
+## explicit
+github.com/denisbrodbeck/machineid
+# github.com/itchyny/json2yaml v0.1.4
+## explicit; go 1.18
+github.com/itchyny/json2yaml
+# github.com/jsightapi/datagram v0.0.0-20220623160954-98dd8ec27707
+## explicit; go 1.18
+github.com/jsightapi/datagram
+# github.com/jsightapi/jsight-api-core v0.1.2-0.20240410083846-3896bc999182
 ## explicit; go 1.18
 github.com/jsightapi/jsight-api-core/catalog
+github.com/jsightapi/jsight-api-core/catalog/ser/openapi
 github.com/jsightapi/jsight-api-core/core
 github.com/jsightapi/jsight-api-core/directive
 github.com/jsightapi/jsight-api-core/jerr
 github.com/jsightapi/jsight-api-core/kit
 github.com/jsightapi/jsight-api-core/notation
 github.com/jsightapi/jsight-api-core/scanner
-# github.com/jsightapi/jsight-schema-core v0.1.2-0.20230517092740-1dbc4fc1bfae
+# github.com/jsightapi/jsight-schema-core v0.1.2-0.20240408152708-e7bf8600722c
 ## explicit; go 1.18
 github.com/jsightapi/jsight-schema-core
 github.com/jsightapi/jsight-schema-core/bytes
@@ -28,6 +38,10 @@ github.com/jsightapi/jsight-schema-core/notations/jschema/ischema/constraint
 github.com/jsightapi/jsight-schema-core/notations/jschema/loader
 github.com/jsightapi/jsight-schema-core/notations/jschema/scanner
 github.com/jsightapi/jsight-schema-core/notations/regex
+github.com/jsightapi/jsight-schema-core/openapi
+github.com/jsightapi/jsight-schema-core/openapi/internal
+github.com/jsightapi/jsight-schema-core/openapi/internal/jsoac
+github.com/jsightapi/jsight-schema-core/openapi/internal/rsoac
 github.com/jsightapi/jsight-schema-core/panics
 github.com/jsightapi/jsight-schema-core/reader
 github.com/jsightapi/jsight-schema-core/rules/enum
@@ -37,9 +51,15 @@ github.com/lucasjones/reggen
 # github.com/russross/blackfriday/v2 v2.1.0
 ## explicit
 github.com/russross/blackfriday/v2
-# github.com/urfave/cli/v2 v2.8.1
+# github.com/stretchr/testify v1.9.0
+## explicit; go 1.17
+# github.com/urfave/cli/v2 v2.27.1
 ## explicit; go 1.18
 github.com/urfave/cli/v2
 # github.com/xrash/smetrics v0.0.0-20201216005158-039620a65673
 ## explicit
 github.com/xrash/smetrics
+# golang.org/x/sys v0.19.0
+## explicit; go 1.18
+golang.org/x/sys/windows
+golang.org/x/sys/windows/registry
