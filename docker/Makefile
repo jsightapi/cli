@@ -15,5 +15,14 @@ lint:
 .PHONY: build
 build:
 	cd ${WORK_DIR} && go build \
-		-o ${BUILD_DIR}/jsight \
+		-o ${BUILD_DIR}/linux-x64/jsight \
 		.
+
+	cd ${WORK_DIR} && GOOS=darwin GOARCH=amd64 go build \
+		-o ${BUILD_DIR}/macos-x64/jsight \
+		.
+
+	cd ${WORK_DIR} && GOOS=windows GOARCH=amd64 go build \
+		-o ${BUILD_DIR}/windows-x64/jsight.exe \
+		.
+	
