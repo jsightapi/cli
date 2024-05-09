@@ -1,9 +1,13 @@
 NAME:
-   jsight convert openapi json - converts JSight to OpenAPI JSON
+   jsight convert openapi - converts JSight to OpenAPI JSON or YAML
 
 USAGE:
-   jsight convert openapi json [command options] <input>
+   jsight convert openapi command [command options] 
+
+COMMANDS:
+   json     converts JSight to OpenAPI JSON
+   yaml     converts JSight to OpenAPI YAML
+   help, h  Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h  show help (default: false)
-   
+   --help, -h  show help

@@ -12,6 +12,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/cat"
+      tags:
+        - /cats
 components:
   schemas:
     cat:

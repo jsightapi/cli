@@ -2,9 +2,6 @@ VERSION="0.0.1"
 COMMIT_HASH=`git show -s --format=%H`
 WORK_DIR="/go/src/github.com/jsightapi/cli"
 
-.PHONY: all
-all: build test
-
 .PHONY: build
 build: 
 	docker build --rm -f "docker/Dockerfile" --progress plain --output build .
@@ -22,4 +19,4 @@ lint:
 	golangci-lint run
 
 .PHONY: dev
-dev: fmt lint test
+dev: fmt lint build test

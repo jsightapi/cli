@@ -48,7 +48,7 @@ else
     echo "> Test 06: [FAILED] \`convert openapi json test06.jst\` output does not match the expected value!\n\n- ACTUAL:\n`head -n 5 /tmp/openapi06.json`\n\n- EXPECTED:\n`head -n 5 ./expected/openapi06.json`"
 fi
 
-jsight -s convert openapi json > /tmp/openapi07-error
+jsight -s convert openapi > /tmp/openapi07-error
 if cmp --silent /tmp/openapi07-error ./expected/openapi07-error; then
     echo "> Test 07: [OK]"
 else
