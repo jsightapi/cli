@@ -54,12 +54,14 @@ func jsonToYAML(jsonData []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	return removeLastLineBreak(to), nil
+	return to.Bytes(), nil
 }
 
+/*
 func removeLastLineBreak(input *bytes.Buffer) []byte {
 	if bs := input.Bytes(); len(bs) > 0 && bs[len(bs)-1] == '\n' {
 		return bs[:len(bs)-1]
 	}
 	return input.Bytes()
 }
+*/

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "Catsbook API",
+    "title": "CLI autotest (jtest)",
     "version": ""
   },
   "paths": {

@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "",
+    "title": "CLI autotest (jtest)",
     "version": ""
   },
   "paths": {
