@@ -1,2 +1,4 @@
-Version: 1.0.0 (308e7ca4c3225f2753c72e3c04eafdae30ab5c67)
-Golang version: go1.18.3
+Version: 1.1.0
+--
+   By default, the application sends anonymous usage and error statistics to JSight to help improve the product.
+   Use the -s option to stop sending the statistics.

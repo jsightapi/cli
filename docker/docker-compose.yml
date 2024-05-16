@@ -1,10 +1,9 @@
-version: '3.1'
 services:
   tester:
     container_name: jsight-cli-tester
     image: debian:latest
     volumes:
-      - ./../build:/usr/local/bin
+      - ./../build/linux-x64:/usr/local/bin
       - ./../tests:/app/tests
     working_dir: /app/tests
     command: /bin/sh -c "/app/tests/run-tests.sh"

@@ -1,5 +1,3 @@
-VERSION="0.0.1"
-COMMIT_HASH=`git show -s --format=%H`
 WORK_DIR=/go/src/github.com/jsightapi/cli
 BUILD_DIR=/tmp/build
 
@@ -17,7 +15,14 @@ lint:
 .PHONY: build
 build:
 	cd ${WORK_DIR} && go build \
-		-ldflags="-X 'main.Version=${VERSION}'" \
-		-ldflags="-X 'main.CommitHash=${COMMIT_HASH}'" \
-		-o ${BUILD_DIR}/jsight \
+		-o ${BUILD_DIR}/linux-x64/jsight \
 		.
+
+	cd ${WORK_DIR} && GOOS=darwin GOARCH=amd64 go build \
+		-o ${BUILD_DIR}/macos-x64/jsight \
+		.
+
+	cd ${WORK_DIR} && GOOS=windows GOARCH=amd64 go build \
+		-o ${BUILD_DIR}/windows-x64/jsight.exe \
+		.
+	

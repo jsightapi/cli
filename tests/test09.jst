@@ -1,0 +1,16 @@
+JSIGHT 0.3
+
+INFO
+  Title "CLI autotest (jtest)"
+
+INCLUDE "lib.jst"
+
+GET /cats
+  200
+    @cat
+
+TYPE @cat
+{
+  "id": 123,
+  "name": "Tom" // {optional: true}
+}

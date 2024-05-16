@@ -32,9 +32,11 @@
 **JSight CLI** is the cli tool which performs various task when working with [JSight API
 language](https://jsight.io/docs/jsight-api-0-3).
 
-Currently, the **JSight CLI** allows you to perform only one task:
+The **JSight CLI** allows you to perform the following tasks:
 
-1. Parsing code in the JSight API language and converting it to HTML document file.
+1. Parsing code in the JSight API language and checking JSight API syntax.
+2. Generating HTML API documentation in a single `*.html` file.
+3. Converting JSight to OpenAPI 3.0.
 
 > :fire: If you have any ideas or suggestions, please share with us:
 > 
@@ -43,10 +45,12 @@ Currently, the **JSight CLI** allows you to perform only one task:
 
 ## :rocket: &nbsp; Install
 
+### Linux
+
 Download `jsight` cli tool from the official website and move to the `/usr/local/bin` folder:
 
 ```sh
-wget https://jsight.io/downloads/jsight-cli/1.0.0/linux-x64/jsight
+wget https://jsight.io/downloads/jsight-cli/1.1.0/linux-x64/jsight
 mv jsight /usr/local/bin
 chmod +x /usr/local/bin/jsight
 ```
@@ -57,17 +61,53 @@ Check the installation:
 jsight version
 ```
 
+### Mac OS
+
+Download `jsight` cli tool from the official website and move to the `/usr/local/bin` folder:
+
+```bash
+wget https://jsight.io/downloads/jsight-cli/1.1.0/macos-x64/jsight && mv jsight /usr/local/bin && chmod +x /usr/local/bin/jsight
+```
+
+Check the installation:
+
+```bash
+jsight version
+```
+
+### Windows
+
+Download `jsight.exe` cli tool from the official website (Powershell):
+
+```bash
+curl https://jsight.io/downloads/jsight-cli/1.1.0/windows-x64/jsight.exe -outfile jsight.exe
+```
+
+Check the installation:
+
+```bash
+jsight.exe version
+```
+
 ## :rocket: &nbsp; Usage
 
 - `jsight version` — outputs the current version of JSight CLI.
 - `jsight help` — outputs the manaul fo JSight CLI.
 - `jsight doc html <jsight file>` — parses the `<jsight file>` and outputs the corresponding html
   document (or an error description).
+- `jsight convert openapi yaml <jsight file>` — parses the `<jsight file>`, converts it to OpenAPI and outputs the OpenAPI definition in the YAML format.
+- `jsight convert openapi json <jsight file>` — parses the `<jsight file>`, converts it to OpenAPI and outputs the OpenAPI definition in the JSON format.  
 
-Example:
+**Creating HTML doc example:**
 
-```sh
+```bash
 jsight doc html my-api-spec.jst > my-api-spec.html
+```
+
+**Converting to OpenAPI example:**
+
+```bash
+jsight convert openapi yaml my-api-spec.jst > my-api-spec.openapi
 ```
 
 ## :rocket: &nbsp; Manual Building and Testing
@@ -113,6 +153,8 @@ document.
 <a href="https://github.com/Emptyfruit"><img src="https://avatars.githubusercontent.com/u/14968783?v=4" width="100" height="100" alt=""/></a>
 <a href="https://github.com/add2"><img src="https://avatars.githubusercontent.com/u/3954234?v=4" width="100" height="100" alt=""/></a>
 <a href="https://github.com/constantine-malyshev"><img src="https://avatars.githubusercontent.com/u/101567029?v=4" width="100" height="100" alt=""/></a>
+<a href="https://github.com/tobiashochguertel"><img src="https://avatars.githubusercontent.com/u/3332669?v=4" width="100" height="100" alt=""/></a>
+<a href="https://github.com/chepil"><img src="https://avatars.githubusercontent.com/u/1425370?v=4" width="100" height="100" alt=""/></a>
 
 <div>  
   &nbsp; 
