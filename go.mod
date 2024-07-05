@@ -6,7 +6,7 @@ require (
 	github.com/denisbrodbeck/machineid v1.0.1
 	github.com/itchyny/json2yaml v0.1.4
 	github.com/jsightapi/datagram v0.0.0-20220623160954-98dd8ec27707
-	github.com/jsightapi/jsight-api-core v0.2.0
+	github.com/jsightapi/jsight-api-core v0.3.0
 	github.com/urfave/cli/v2 v2.27.1
 )
 
